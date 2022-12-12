@@ -1,3 +1,6 @@
+const linkDestinations = ['https://github.com/Luka-Macieszczak/DirectX', 'https://github.com/Luka-Macieszczak/DirectXServer']
+
+
 const menu = document.getElementById("menu");
 console.log('hello world')
 Array.from(document.getElementsByClassName("menu-item"))
@@ -30,6 +33,12 @@ links.forEach((link, index) => {
     let x = `${((index%3) - 1) * 25}vw`
     link.style.setProperty('--opacity', '1')
     link.style.setProperty('--pos-x', x)
+    if( index%3 != 2){
+        console.log(index)
+        link.onclick = () => {
+            window.open(linkDestinations[index])
+        }
+    }
 })
 
 let isDescActive = true;
@@ -53,12 +62,3 @@ Array.from(document.getElementsByClassName('card'))
             }
         }
     })
-
-
-
-Array.from(document.getElementsByClassName('link'))
-    .forEach((link, index) => {
-        link.onclick = () => {
-            window.open('https://directx.live')
-        }
-     })

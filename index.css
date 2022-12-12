@@ -353,4 +353,13 @@ body {
     transition: opacity 600ms ease;
     display: flex;
     align-items: center;
+    flex-direction: row;
+}
+
+.video {
+    height: 12vh;
+    width: 13vw;
+    margin-left: calc(var(--pos-x) - 10vw);
+    margin-top: 50vh;
+
 }
