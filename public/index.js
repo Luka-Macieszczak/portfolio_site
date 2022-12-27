@@ -1,6 +1,5 @@
 const linkDestinations = ['https://github.com/Luka-Macieszczak/DirectX', 'https://github.com/Luka-Macieszczak/DirectXServer']
 
-
 const menu = document.getElementById("menu");
 console.log('hello world')
 Array.from(document.getElementsByClassName("menu-item"))
@@ -62,3 +61,12 @@ Array.from(document.getElementsByClassName('card'))
             }
         }
     })
+
+const skills = document.getElementById("skills")
+
+skills.onmousemove = (e) => {
+    const rect = skills.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top;
+
+    skills.style.setProperty("--mouse-x", `${x}px`)
+    skills.style.setProperty("--mouse-y", `${y}px`)
+}
