@@ -8,9 +8,9 @@ renderer.render(scene, camera);
 
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
-camera.position.setZ(100);
-camera.position.setX(100); 
-
+camera.position.setZ(200);
+camera.position.setX(0); 
+camera.position.setY(-50); 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
 
@@ -64,6 +64,7 @@ const radius = 200;
 geometry = new THREE.BufferGeometry();
 
 const positions = [];
+const offset = [];
 const colors = [];
 const sizes = [];
 
@@ -72,8 +73,10 @@ const color = new THREE.Color();
 for ( let i = 0; i < 50; i ++ ) {
 
     positions.push( ( Math.random() * 2 - 1 ) * radius );
-    positions.push( ( Math.random() * 2 - 1 ) * radius );
-    positions.push( ( Math.random() * 2 - 1 ) * radius );
+    positions.push( ( Math.random() * 2 - 1 ) * radius/2 );
+    positions.push( ( Math.random() * 2 - 1 ) * radius/2 );
+
+    offset.push((Math.random() * 2*Math.PI))
 
     color.setHSL( i / 50, 1.0, 0.5 );
 
@@ -109,14 +112,16 @@ let t = 0
 function animate() {
     requestAnimationFrame(animate);
     //composer.render();
-    t += 0.01
+    t += 0.003
     //particleSystem.rotation.z = 0.01 * t;
 
     const positions = geometry.attributes.position.array;
     
-    for ( let i = 0; i < positions.length; i ++ ) {
+    for ( let i = 0; i < 150; i += 3 ) {
 
-        positions[ i ] = positions[i] + Math.sin( t );
+        positions[ i ] = positions[i] + 0.3* Math.cos( t + offset[i / 3]);
+        positions[i + 1] = positions[i + 1] - 0.3*Math.cos( t + offset[i / 3]);
+        positions[i + 2] = positions[i + 2] - 0.3*Math.sin( t + offset[i / 3]);
 
     }
 
