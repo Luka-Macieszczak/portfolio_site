@@ -7,7 +7,7 @@ renderer.render(scene, camera);
 
 
 renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setSize( window.innerWidth, 2*window.innerHeight );
 camera.position.setZ(200);
 camera.position.setX(0); 
 camera.position.setY(-50); 
